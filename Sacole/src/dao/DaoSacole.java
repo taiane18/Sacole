@@ -83,7 +83,7 @@ public class DaoSacole {
        public static List<Sacole> consultar() {
         List<Sacole> resultados = new ArrayList<>();
         //editar o SQL conforme a entidade
-        String sql = "SELECT codigo, sabor, data_validade preco, nr_serie FROM sacole";
+        String sql = "SELECT codigo, sabor, data_validade, preco, nr_serie FROM sacole";
         PreparedStatement ps;
         try {
             ps = conexao.Conexao.getConexao().prepareStatement(sql);
@@ -108,7 +108,7 @@ public class DaoSacole {
        
  public static Sacole consultar(int primaryKey) {
         //editar o SQL conforme a entidade
-        String sql = "SELECT codigo, sabor, preco, nr_serie FROM sacole WHERE codigo=?";
+        String sql = "SELECT codigo, sabor, data_validade, preco, nr_serie FROM sacole WHERE codigo=?";
         PreparedStatement ps;
         try {
             ps = conexao.Conexao.getConexao().prepareStatement(sql);
