@@ -24,6 +24,7 @@ public class ControladorSacole {
     public static void inserir(ManutencaoSacole man){
         Sacole objeto = new Sacole();
         objeto.setSabor(man.jtfSabor.getText());
+        objeto.setData_validade(LocalDate.parse(man.jtfData_validade.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         objeto.setPreco(Double.parseDouble(man.jtfPreco.getText()));
         objeto.setNr_serie(Integer.parseInt(man.jtfNr_serie.getText()));
         
@@ -40,6 +41,7 @@ public class ControladorSacole {
         //definir todos os atributos
         objeto.setCodigo(Integer.parseInt(man.jtfCodigo.getText()));
         objeto.setSabor(man.jtfSabor.getText());
+        objeto.setData_validade(LocalDate.parse(man.jtfData_validade.getText(), DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         objeto.setPreco(Double.parseDouble(man.jtfPreco.getText()));
         objeto.setNr_serie(Integer.parseInt(man.jtfNr_serie.getText()));
         
@@ -73,6 +75,7 @@ public class ControladorSacole {
         //definindo o cabeçalho da tabela
         modelo.addColumn("Codigo");
         modelo.addColumn("Sabor");
+        modelo.addColumn("Data de validade");
         modelo.addColumn("Preço");
         modelo.addColumn("Nr. Série");
         List<Sacole> resultados = DaoSacole.consultar();
@@ -82,6 +85,7 @@ public class ControladorSacole {
             //definindo o conteúdo da tabela
             linha.add(objeto.getCodigo());
             linha.add(objeto.getSabor());
+            linha.add(objeto.getData_validade().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
             linha.add(objeto.getPreco());
             linha.add(objeto.getNr_serie());
             modelo.addRow(linha); //adicionando a linha na tabela
@@ -94,6 +98,7 @@ public class ControladorSacole {
         //Definindo os valores do campo na tela (um para cada atributo/campo)
         man.jtfCodigo.setText(objeto.getCodigo().toString());
         man.jtfSabor.setText(objeto.getSabor());
+        man.jtfData_validade.setText(objeto.getData_validade().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         man.jtfPreco.setText(objeto.getPreco().toString());
         man.jtfNr_serie.setText(objeto.getNr_serie().toString());
         

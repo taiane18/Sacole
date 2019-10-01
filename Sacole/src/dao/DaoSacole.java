@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import modelo.Sacole;
 import java.sql.ResultSet;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -37,6 +38,7 @@ public class DaoSacole {
       public static void main(String[] args) {
         Sacole objeto = new Sacole();
         objeto.setSabor("Chocolate preto");
+        objeto.setData_validade(LocalDate.parse("11/01/1988", DateTimeFormatter.ofPattern("dd/MM/yyyy")));
         objeto.setPreco(2.3);
         objeto.setNr_serie(2);
         
@@ -93,6 +95,7 @@ public class DaoSacole {
                 //definir um set para cada atributo da entidade, cuidado com o tipo
                 objeto.setCodigo(rs.getInt("codigo"));
                 objeto.setSabor(rs.getString("sabor"));
+                objeto.setData_validade(rs.getDate("data_validade").toLocalDate());
                 objeto.setPreco(rs.getDouble("preco"));
                 objeto.setNr_serie(rs.getInt("nr_serie"));
                 
@@ -119,6 +122,7 @@ public class DaoSacole {
                 //definir um set para cada atributo da entidade, cuidado com o tipo
                 objeto.setCodigo(rs.getInt("codigo"));
                 objeto.setSabor(rs.getString("sabor"));
+                objeto.setData_validade(rs.getDate("data_validade").toLocalDate());
                 objeto.setPreco(rs.getDouble("preco"));
                 objeto.setNr_serie(rs.getInt("nr_serie"));
                 return objeto;//não mexa nesse, ele adiciona o objeto na lista
