@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import modelo.Sacole;
 import java.sql.ResultSet;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
  */
 public class DaoSacole {
      public static boolean inserir(Sacole objeto) {
-        String sql = "INSERT INTO sacole (sabor, data_validade, preco, nr_serie) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO sacole (sabor, data_validade, preco, nr_serie) VALUES (?, ?, ?, ?)";
         try {
             PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
             ps.setString(1, objeto.getSabor());
@@ -51,7 +52,7 @@ public class DaoSacole {
     }
       
       public static boolean alterar(Sacole objeto) {
-        String sql = "UPDATE sacole SET sabor = ?, data_validade = ?, preco = ?, nr_serie WHERE codigo=?";
+        String sql = "UPDATE sacole SET sabor = ?, data_validade = ?, preco = ?, nr_serie = ? WHERE codigo=?";
         try {
             PreparedStatement ps = conexao.Conexao.getConexao().prepareStatement(sql);
             ps.setString(1, objeto.getSabor());
